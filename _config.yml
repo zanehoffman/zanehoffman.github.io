@@ -96,7 +96,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: https://cdn.discordapp.com/attachments/1043371683421110423/1330963629046104176/IMG_3525.jpg?ex=678fe3f9&is=678e9279&hm=ae29727a3627bce46dc73f68acbf66b2888c140a1be7dbd2d60f9996b8a96210&
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
