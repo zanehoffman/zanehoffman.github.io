@@ -12,21 +12,27 @@ After watching some [Matt Brown](https://www.youtube.com/@mattbrwn) videos on te
 
 First off, I needed to find some cheap devices that I wouldn't mind destroying. Good thing I have about 5 thrift stores within a 10 mile radius of my house. I had gone by a few days prior to see if I would be lucky enough to find a mint condition set of brand new skis in my size (still not lucky) and remembered seeing several devices. At my first stop I was able to grab several devices including a Centurylink Zyxel C3000Z, a TP-Link Archer C7, and a Netgear N600. All for under $20. 
 
-![my first victims](){: width="700" height="400" }
+![Image](https://github.com/user-attachments/assets/a183cd11-6cbf-4b26-94c5-5b3b6fdf67be)
 
 I already owned a soldering station with a hot air gun so all I needed now was a way to read the firmware off the devices. Thanks to the power of the internet I found the xgecu t48 universal programmers for sale on Amazon and I was able to have it delivered a few days later. In the meantime, I had no idea how to remove these chips from boards other than from watching videos online. So I spent a few hours destroying chips while practicing my hot air skills. 
 
-![broken stuff](){: w="700" h="400"}
+![Image](https://github.com/user-attachments/assets/09126997-6a97-414c-8e95-5fbb0865dead)
 
 With my new programmer in hand and some practice desoldering chips, I was ready to read my first firmware! Mind you, these devices are all somewhat old and I could have more than likely found current firmware versions for them online. But this is much more fun. 
 
 The first device on the chopping block will be the Netgear N600, because that's the one I am writing this post about. The other devices had some interesting things but I haven't spent enough time to identify any vulnerabilities. The firmware version that was on this device from the thrift store was V1.0.0.20_1.0.28. Great, no one knew what security was 10 years ago so this might have some good bugs!
 
+![{7E238FE3-DD14-4FDD-96B9-C675A0D1F4B4}](https://github.com/user-attachments/assets/1b92951c-29ca-4621-a3b2-c5c518dae906)
+![{86EBA325-FC5C-4DE0-AFEE-E99976B7A29C}](https://github.com/user-attachments/assets/ab679b06-68aa-476a-a01f-3f883a36fe30)
+
+
 This device had a SOIC8 chip (MX25L6406E) that I in theory could read without removing it from the device but for some reason I couldn't get it to work. Fortunately, SOIC8 chips are somewhat easy to remove and I theoretically could put it back on for further testing. 
 
-placeholder:![image of chip removed](){: w="700" h="400"}
+![{DE2FFF4A-EFD4-4EF7-BF34-93B7A4FA2062}](https://github.com/user-attachments/assets/65977b50-c6b4-4e64-b1fd-2aa6a85d5203)
 
-placeholder:![image of chip placed back where i found it](){: w="700" h="400"}
+(I was able to put it back on and the device still works!)
+
+![{ED715188-CEE6-4595-BF2C-3ACF95E489E8}](https://github.com/user-attachments/assets/32e75b19-17a5-42dc-b0a0-42e2ed7de8c9)
 
 With the firmware read from the chip, my first step was to run strings on it to see if anything popped out at me. 
 
@@ -114,8 +120,10 @@ httpd: ELF 32-bit LSB executable, MIPS, MIPS32 version 1 (SYSV), dynamically lin
 
 From here I opened this binary in Ghidra and started to get a lay of the land checking strings for any weird looking content. Nothing popped out at me immediately so my next check was to see if their was any usage of functions without checking user input data (easier said than done). I found a couple uses of 'strcpy' without the n. This could be good if I could determine a user can supply the src data. 
 
-placeholder:ghidra of auth basic token
+![{8B26977E-BF2B-49BD-8327-C0DC3A882648}](https://github.com/user-attachments/assets/8f83eb6f-4f46-4882-8a0e-3a62c86dfc2c)
 
 A side note, while checking the Authorization: Basic header, when base64 decoding the password is sent in plain text in this header. Neat. 
 
-placeholder:base64 decoded header
+Now I need to figure out how to get UART working or patch the firmware to enable remote access so I can debug... it looks like telnet is enabled but for some reason it wouldn't let me connect. For now my adventure will continue in the next post where I did further into the httpd binary and possibly find some vulnerabilities. 
+
+3 devices were bricked in the making of this post.
