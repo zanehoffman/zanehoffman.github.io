@@ -4,7 +4,7 @@ date: 2025-01-20
 categories: ["reverse engineering", "hardware hacking"]
 tags: ["firmware", "reverse engineering", "hardware hacking"]
 
-author: 1
+author: zane
 description: My adventure in hardware hacking and finding vulnerabilities in SOHO devices.
 ---
 
