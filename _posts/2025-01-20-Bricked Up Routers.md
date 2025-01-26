@@ -1,5 +1,5 @@
 ---
-title: Bricked Up Routers
+title: Bricked Routers
 date: 2025-01-20
 categories: ["reverse engineering", "hardware hacking"]
 tags: ["firmware", "reverse engineering", "hardware hacking"]
