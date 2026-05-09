@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+docker run --rm \
+  -v "$PWD:/srv/jekyll" \
+  -w /srv/jekyll \
+  ruby:3.3-bookworm \
+  bash -lc 'bundle config set path vendor/bundle && bundle exec jekyll build'

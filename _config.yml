@@ -1,0 +1,41 @@
+title: "hoffnet"
+description: "A blog for stuff I currently find interesting."
+url: "https://blog.hoffnet.dev"
+baseurl: ""
+author:
+  name: "Zane"
+  email: ""
+
+permalink: /:categories/:year/:month/:day/:title/
+timezone: America/Denver
+
+markdown: kramdown
+highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      author: "Zane"
+  - scope:
+      path: ""
+    values:
+      layout: page
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - scripts
+  - vendor

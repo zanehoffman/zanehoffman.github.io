@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<article class="post prose">
+  <header class="post-header">
+    <p class="post-meta">{{ page.date | date: "%B %-d, %Y" }}{% if page.author %} · {{ page.author }}{% endif %}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.excerpt %}
+      <p class="post-excerpt">{{ page.excerpt | strip_html }}</p>
+    {% endif %}
+    {% if page.tags %}
+      <div class="tag-row">
+        {% for tag in page.tags %}
+          <span>{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </header>
+
+  {{ content }}
+</article>

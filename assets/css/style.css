@@ -1,0 +1,381 @@
+:root {
+  color-scheme: dark;
+  --bg: #0e1116;
+  --panel: #151a22;
+  --panel-strong: #1c2430;
+  --text: #edf2f7;
+  --muted: #a7b0bf;
+  --faint: #748095;
+  --line: #2a3340;
+  --accent: #36d399;
+  --accent-2: #62a8ff;
+  --warning: #f6c177;
+  --code-bg: #0a0d12;
+  --shadow: 0 22px 60px rgba(0, 0, 0, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--bg);
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(54, 211, 153, 0.12), transparent 32rem),
+    linear-gradient(180deg, #10141b 0%, var(--bg) 38rem);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 10;
+  padding: 0.6rem 0.8rem;
+  color: #06110c;
+  background: var(--accent);
+  border-radius: 6px;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.site-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(14, 17, 22, 0.78);
+  backdrop-filter: blur(16px);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.nav-wrap,
+.site-main,
+.site-footer {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.nav-wrap {
+  min-height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--text);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  color: #05110c;
+  background: var(--accent);
+  border-radius: 6px;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.nav-links a,
+.text-link {
+  color: var(--muted);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav-links a:hover,
+.text-link:hover {
+  color: var(--accent);
+}
+
+.site-main {
+  padding: 3rem 0 4rem;
+}
+
+.home-hero {
+  max-width: 760px;
+  padding: 4.5rem 0 3rem;
+}
+
+.hero-copy h1 {
+  max-width: 13ch;
+  margin: 0 0 1rem;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: 0.9;
+  letter-spacing: 0;
+}
+
+.hero-copy p:not(.eyebrow) {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.18rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.65rem;
+  color: var(--accent);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 3rem 0 1.25rem;
+}
+
+.section-heading h2,
+.archive h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.05;
+}
+
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 17rem;
+  padding: 1.15rem;
+  background: rgba(21, 26, 34, 0.86);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.post-card a {
+  flex: 1;
+  text-decoration: none;
+}
+
+.post-card h2,
+.post-card h3 {
+  margin: 0.35rem 0 0.65rem;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.post-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.post-card:hover {
+  border-color: rgba(54, 211, 153, 0.55);
+}
+
+.post-meta {
+  color: var(--faint);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.82rem;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1rem;
+}
+
+.tag-row span {
+  padding: 0.22rem 0.5rem;
+  color: var(--accent);
+  background: rgba(54, 211, 153, 0.09);
+  border: 1px solid rgba(54, 211, 153, 0.2);
+  border-radius: 999px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+}
+
+.archive h1 {
+  margin-bottom: 1.5rem;
+}
+
+.page,
+.post {
+  width: min(760px, 100%);
+  margin: 0 auto;
+}
+
+.post-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.post-header h1 {
+  margin: 0.4rem 0 1rem;
+  font-size: clamp(2.3rem, 6vw, 4rem);
+  line-height: 1;
+}
+
+.post-excerpt {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+.prose {
+  color: var(--muted);
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.prose h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.prose h2 {
+  margin-top: 2.2rem;
+  font-size: 1.65rem;
+}
+
+.prose a {
+  color: var(--accent-2);
+  text-underline-offset: 0.2rem;
+}
+
+.prose img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+}
+
+.prose p:has(> img:only-child) {
+  margin: 1.5rem 0;
+  padding: 0.55rem;
+  background: rgba(21, 26, 34, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+}
+
+.prose code {
+  padding: 0.12rem 0.32rem;
+  color: var(--warning);
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9em;
+}
+
+.prose pre {
+  overflow-x: auto;
+  padding: 1rem;
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.prose pre code {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: var(--text);
+}
+
+.prose blockquote {
+  margin-left: 0;
+  padding-left: 1rem;
+  color: var(--text);
+  border-left: 3px solid var(--accent);
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2rem 0 3rem;
+  color: var(--faint);
+  border-top: 1px solid var(--line);
+}
+
+.site-footer p {
+  margin: 0.25rem 0 0;
+}
+
+@media (max-width: 860px) {
+  .post-list {
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero {
+    padding-top: 2.5rem;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(3rem, 16vw, 5rem);
+  }
+
+  .post-card {
+    min-height: auto;
+  }
+
+}
+
+@media (max-width: 640px) {
+  .nav-wrap,
+  .site-footer,
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nav-links {
+    gap: 0.75rem;
+  }
+
+  .site-main {
+    padding-top: 1.5rem;
+  }
+}
